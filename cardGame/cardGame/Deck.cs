@@ -62,7 +62,9 @@ namespace cardGame
                 List<Card>  draw = new List<Card>();
                 while (draw.Count() < 8)
                 {
-                    draw.Add(cardList.Remove(0));
+
+                    draw.Add(cardList.First());
+                    cardList.RemoveAt(0);
                 }
                 hands.Add(new Hand(draw));
             }
