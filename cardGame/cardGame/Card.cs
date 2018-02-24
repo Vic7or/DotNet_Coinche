@@ -8,7 +8,7 @@ namespace cardGame
 {
     class Card
     {
-       enum Color
+       public enum Color
         {
             CLUB = 0,
             SPADE,
@@ -16,7 +16,7 @@ namespace cardGame
             DIAMOND 
         }
 
-        enum Value
+        public enum Value
         {
             SEVEN = 7,
             EIGHT,
@@ -28,22 +28,13 @@ namespace cardGame
             ACE
         }
 
-        private Color    color;
-        private Value    value;
+        public Color     color { get; set; }
+        public Value     value { get; set; }
 
         public Card (Color color, Value value)
         {
             this.color = color;
             this.value = value;
-        }
-        public Color getColor()
-        {
-            return color;
-        }
-
-        public Value getValue()
-        {
-            return value;
         }
 
     }
