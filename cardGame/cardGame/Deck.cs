@@ -68,10 +68,10 @@ namespace cardGame
                 }
                 hands.Add(new Hand(draw));
             }
-            clients[0].hand = hands.get(0);
-            clients[1].hand = hands.get(1);
-            clients[2].hand = hands.get(2);
-            clients[3].hand = hands.get(3);
+            clients[0].hand = hands.ElementAt(0);
+            clients[1].hand = hands.ElementAt(1);
+            clients[2].hand = hands.ElementAt(2);
+            clients[3].hand = hands.ElementAt(3);
             return;
         }
 
