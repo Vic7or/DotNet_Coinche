@@ -36,7 +36,7 @@ namespace cardGame
             {
                 card = it;
                 i += 1;
-                Console.WriteLine("[" + i + "] : " + card.value.ToString() + card.color.ToString());
+                Console.WriteLine("[" + i + "] : " + card.value.ToString() + " " + card.color.ToString());
             }
         }
     }
