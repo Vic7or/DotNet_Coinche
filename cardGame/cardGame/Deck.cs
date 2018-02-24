@@ -63,7 +63,6 @@ namespace cardGame
                 List<Card>  draw = new List<Card>();
                 while (draw.Count() < 8)
                 {
-
                     draw.Add(cardList.First());
                     cardList.RemoveAt(0);
                 }
