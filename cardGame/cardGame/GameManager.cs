@@ -11,11 +11,11 @@ namespace cardGame
         private List<Card>      stack = new List<Card>();
         private Deck            deck = new Deck();
         private Boolean         alive = true;
-        private CoincheServer   server;
+        //private CoincheServer   server;
 
-        public GameManager(CoincheServer _server)
+        public GameManager(/*CoincheServer _server*/)
         {
-            server = _server;
+            //server = _server;
         }
 
         public void run()

@@ -13,7 +13,7 @@ namespace cardGame
             createDeck();
         }
 
-        public List<Card>   cardList;
+        public List<Card> cardList { get; set; }
 
         public void createDeck()
         {
@@ -51,7 +51,7 @@ namespace cardGame
             cardList.Add(new Card(Card.Color.SPADE, Card.Value.KING));
             cardList.Add(new Card(Card.Color.SPADE, Card.Value.ACE));
             //SHUFFLE HERE
-            ShuffleList(cardList);
+            cardList = ShuffleList(cardList);
         }
 
         public void distrib(JClient[] clients)
@@ -69,10 +69,10 @@ namespace cardGame
                 }
                 hands.Add(new Hand(draw));
             }
-            clients[0].hand = hands.ElementAt(0);
-            clients[1].hand = hands.ElementAt(1);
-            clients[2].hand = hands.ElementAt(2);
-            clients[3].hand = hands.ElementAt(3);
+            clients[0].hand = hands[0];
+            clients[1].hand = hands[1];
+            clients[2].hand = hands[2];
+            clients[3].hand = hands[3];
             return;
         }
 

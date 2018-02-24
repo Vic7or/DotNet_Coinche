@@ -9,7 +9,8 @@ namespace cardGame
 {
     class Hand
     {
-        List<Card> cards;
+        List<Card> cards { get; set; }
+
         public Hand(List<Card> cards)
         {
             this.cards = cards;
