@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace cardGame
 {
-    internal class Card
+    class Card
     {
-       public enum Color
+       enum Color
         {
             CLUB = 0,
             SPADE,
@@ -16,7 +16,7 @@ namespace cardGame
             DIAMOND 
         }
 
-        public enum Value
+        enum Value
         {
             SEVEN = 7,
             EIGHT,
@@ -28,8 +28,8 @@ namespace cardGame
             ACE
         }
 
-        public Color    color;
-        public Value    value;
+        private Color    color;
+        private Value    value;
 
         public Card (Color color, Value value)
         {
@@ -40,6 +40,7 @@ namespace cardGame
         {
             return color;
         }
+
         public Value getValue()
         {
             return value;

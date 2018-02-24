@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace cardGame
 {
-    internal class Deck
+    class Deck
     {
         Deck()
         {
             createDeck();
         }
 
-        public List<Card>   cardList;
+        private List<Card>   cardList;
+
         public void createDeck()
         {
             cardList = new List<Card>();
