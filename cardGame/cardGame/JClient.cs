@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace cardGame
 {
-    class Program
+    class JClient
     {
-        static void Main(string[] args)
-        {
-
-        }
+        Hand hand;
     }
 }
