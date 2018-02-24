@@ -8,6 +8,6 @@ namespace cardGame
 {
     class JClient
     {
-        Hand hand;
+        public Hand hand;
     }
 }
