@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="GameManager.cs" />
     <Compile Include="JClient.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="Deck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
