@@ -8,12 +8,12 @@ namespace cardGame
 {
     class Deck
     {
-        Deck()
+        public Deck()
         {
             createDeck();
         }
 
-        private List<Card>   cardList;
+        public List<Card>   cardList;
 
         public void createDeck()
         {
