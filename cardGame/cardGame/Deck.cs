@@ -53,7 +53,7 @@ namespace cardGame
             //SHUFFLE HERE
         }
 
-        public void distrib(Player[] players)
+        public void distrib(JClient[] client)
         {
             List<Hand>      hands = new List<Hand>();
         
@@ -66,10 +66,10 @@ namespace cardGame
                 }
                 hands.Add(new Hand(draw));
             }
-            players[0].getFirst().hand = hands.get(0);
-            players[0].getSecond().hand = hands.get(1);
-            players[1].getFirst().hand = hands.get(2);
-            players[1].getSecond().hand = hands.get(3);
+            client[0].getFirst().hand = hands.get(0);
+            client[0].getSecond().hand = hands.get(1);
+            client[1].getFirst().hand = hands.get(2);
+            client[1].getSecond().hand = hands.get(3);
             return;
         }
 
