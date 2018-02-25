@@ -22,6 +22,7 @@ namespace cardGame
 
         public void run()
         {
+            JClient client;
             Console.WriteLine("GameManager is running.");
             turn = 0;
             deck.distrib(clients);
@@ -40,8 +41,41 @@ namespace cardGame
                 else
                 {
                     // tour de jeu
+                    if (stack.Count == 0)
+                        AskCurrentPlayerToPlayVisibleCard();
+                    else
+                    {
+                        AskCurrentPlayerToPlayHiddenCard();
+                        if ((client = AskEachOtherPlayersToDenonce()) != null)
+                        {
+                            // Check the assertion
+                            ChangeTurn();
+                        }
+                        else
+                            ChangeTurn();
+                    }
                 }
             }
+        }
+
+        private void ChangeTurn()
+        {
+            throw new NotImplementedException();
+        }
+
+        private JClient AskEachOtherPlayersToDenonce()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AskCurrentPlayerToPlayHiddenCard()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AskCurrentPlayerToPlayVisibleCard()
+        {
+            throw new NotImplementedException();
         }
 
         private bool AskForReplay()
