@@ -96,7 +96,10 @@ namespace cardGame
             for (int i = 0; i < 4; ++i)
             {
                 if (clients[i].hand.getCards().Count == 0)
+                {
+                    clients[i].score += 1;
                     return true;
+                }
             }
             return false;
         }
