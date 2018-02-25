@@ -10,7 +10,9 @@ namespace cardGame
     {
         private List<Card>      stack = new List<Card>();
         private Deck            deck = new Deck();
+        private JClient[]       clients = new JClient[4];
         private Boolean         alive = true;
+        private int             turn;
         //private CoincheServer   server;
 
         public GameManager(/*CoincheServer _server*/)
@@ -21,6 +23,35 @@ namespace cardGame
         public void run()
         {
             Console.WriteLine("GameManager is running.");
+            turn = 0;
+            deck.distrib(clients);
+            while (alive)
+            {
+                if (checkIfSomeoneWon())
+                {
+                    if (AskForReplay())
+                    {
+                        run();
+                        return;
+                    }
+                    else
+                        alive = false;
+                }
+                else
+                {
+                    // tour de jeu
+                }
+            }
+        }
+
+        private bool AskForReplay()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool checkIfSomeoneWon()
+        {
+            throw new NotImplementedException();
         }
     }
 }
