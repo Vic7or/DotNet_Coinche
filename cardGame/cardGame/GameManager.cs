@@ -22,7 +22,7 @@ namespace cardGame
 
         public void run()
         {
-            index client_index;
+            int client_index;
             Console.WriteLine("GameManager is running.");
             turn = 0;
             deck.distrib(clients);
