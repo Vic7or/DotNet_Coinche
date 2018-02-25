@@ -40,5 +40,17 @@ namespace cardGame
                 Console.WriteLine("[" + i + "] : " + card.value.ToString() + " " + card.color.ToString());
             }
         }
+
+        public void TakeStack(List<Card> stack)
+        {
+            Card tmp;
+
+            foreach (var it in stack)
+            {
+                tmp = it;
+                cards.Add(tmp);
+            }
+            return;
+        }
     }
 }
