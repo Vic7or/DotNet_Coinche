@@ -22,7 +22,7 @@ namespace cardGame
 
         public void run()
         {
-            JClient client;
+            index client_index;
             Console.WriteLine("GameManager is running.");
             turn = 0;
             deck.distrib(clients);
@@ -46,24 +46,32 @@ namespace cardGame
                     else
                     {
                         AskCurrentPlayerToPlayHiddenCard();
-                        if ((client = AskEachOtherPlayersToDenonce()) != null)
+                        if ((client_index = AskEachOtherPlayersToDenonce()) > -1)
                         {
                             // Check the assertion
-                            ChangeTurn();
+                            if (IsCurrentPlayerLying())
+                                clients[turn].hand.TakeStack(stack);
+                            else
+                                clients[client_index].hand.TakeStack(stack);
                         }
-                        else
-                            ChangeTurn();
                     }
+                    ChangeTurn();
                 }
             }
         }
 
-        private void ChangeTurn()
+        private bool IsCurrentPlayerLying()
         {
             throw new NotImplementedException();
         }
 
-        private JClient AskEachOtherPlayersToDenonce()
+        private void ChangeTurn()
+        {
+            if (++turn > 3)
+                turn = 0;
+        }
+
+        private int AskEachOtherPlayersToDenonce() // return index of the client who denonces the current player
         {
             throw new NotImplementedException();
         }
@@ -85,7 +93,12 @@ namespace cardGame
 
         private bool checkIfSomeoneWon()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < 4; ++i)
+            {
+                if (clients[i].hand.getCards().Count == 0)
+                    return true;
+            }
+            return false;
         }
     }
 }

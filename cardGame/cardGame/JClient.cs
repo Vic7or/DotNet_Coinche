@@ -11,5 +11,6 @@ namespace cardGame
         public String   name { get; set; }
         public Hand     hand { get; set; }
         public int      score { get; set; }
+        public Card     lastPlay { get; set; }
     }
 }
