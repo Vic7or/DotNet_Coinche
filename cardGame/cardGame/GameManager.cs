@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,31 +9,30 @@ namespace cardGame
 {
     class GameManager
     {
-        private List<Card>      stack = new List<Card>();
-        private Deck            deck = new Deck();
-        private JClient[]       clients = new JClient[4];
-        private Boolean         alive = true;
-        private int             turn;
-        //private CoincheServer   server;
+        private List<Card> stack = new List<Card>();
+        private Deck deck = new Deck();
+        public List<Player> players = new List<Player>();
+        private Boolean alive = false;
+        private int turn;
 
-        public GameManager(/*CoincheServer _server*/)
+        public GameManager()
         {
-            //server = _server;
         }
 
-        public void run()
+        public void Run()
         {
             int client_index;
             Console.WriteLine("GameManager is running.");
             turn = 0;
-            deck.distrib(clients);
+            deck.Distrib(players);
+            alive = true;
             while (alive)
             {
-                if (checkIfSomeoneWon())
+                if (CheckIfSomeoneWon())
                 {
                     if (AskForReplay())
                     {
-                        run();
+                        Run();
                         return;
                     }
                     else
@@ -50,9 +50,9 @@ namespace cardGame
                         {
                             // Check the assertion
                             if (IsCurrentPlayerLying())
-                                clients[turn].hand.TakeStack(stack);
+                                players[turn].Hand.TakeStack(stack);
                             else
-                                clients[client_index].hand.TakeStack(stack);
+                                players[client_index].Hand.TakeStack(stack);
                         }
                     }
                     ChangeTurn();
@@ -91,17 +91,31 @@ namespace cardGame
             throw new NotImplementedException();
         }
 
-        private bool checkIfSomeoneWon()
+        private bool CheckIfSomeoneWon()
         {
             for (int i = 0; i < 4; ++i)
             {
-                if (clients[i].hand.getCards().Count == 0)
+                if (players[i].Hand.getCards().Count == 0)
                 {
-                    clients[i].score += 1;
+                    players[i].Score += 1;
                     return true;
                 }
             }
             return false;
+        }
+
+        internal void Leaver(Socket current)
+        {
+            alive = false;
+            for (int i = 0; i < players.Count; ++i)
+                if (players[i].Socket.RemoteEndPoint.Equals(current.RemoteEndPoint))
+                {
+                    if (players[i].Name != null)
+                        Console.WriteLine(players[i].Name + "has left.");
+                    else
+                        Console.WriteLine("Someone has left.");
+                    players.Remove(players[i]);
+                }
         }
     }
 }

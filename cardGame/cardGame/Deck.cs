@@ -10,74 +10,74 @@ namespace cardGame
     {
         public Deck()
         {
-            createDeck();
+            CreateDeck();
         }
 
-        public List<Card> cardList { get; set; }
+        public List<Card> CardList { get; set; }
 
-        public void createDeck()
+        public void CreateDeck()
         {
-            cardList = new List<Card>();
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.SEVEN));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.EIGHT));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.NINE));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.TEN));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.JACK));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.QUEEN));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.KING));
-            cardList.Add(new Card(Card.Color.CLUB, Card.Value.ACE));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.SEVEN));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.EIGHT));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.NINE));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.TEN));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.JACK));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.QUEEN));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.KING));
-            cardList.Add(new Card(Card.Color.DIAMOND, Card.Value.ACE));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.SEVEN));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.EIGHT));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.NINE));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.TEN));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.JACK));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.QUEEN));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.KING));
-            cardList.Add(new Card(Card.Color.HEART, Card.Value.ACE));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.SEVEN));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.EIGHT));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.NINE));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.TEN));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.JACK));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.QUEEN));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.KING));
-            cardList.Add(new Card(Card.Color.SPADE, Card.Value.ACE));
+            CardList = new List<Card>();
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.SEVEN));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.EIGHT));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.NINE));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.TEN));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.JACK));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.QUEEN));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.KING));
+            CardList.Add(new Card(Card.Color.CLUB, Card.Value.ACE));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.SEVEN));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.EIGHT));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.NINE));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.TEN));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.JACK));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.QUEEN));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.KING));
+            CardList.Add(new Card(Card.Color.DIAMOND, Card.Value.ACE));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.SEVEN));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.EIGHT));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.NINE));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.TEN));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.JACK));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.QUEEN));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.KING));
+            CardList.Add(new Card(Card.Color.HEART, Card.Value.ACE));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.SEVEN));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.EIGHT));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.NINE));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.TEN));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.JACK));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.QUEEN));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.KING));
+            CardList.Add(new Card(Card.Color.SPADE, Card.Value.ACE));
             //SHUFFLE HERE
-            cardList = ShuffleList(cardList);
+            CardList = ShuffleList(CardList);
         }
 
-        public void distrib(JClient[] clients)
+        public void Distrib(List<Player> players)
         {
-            List<Hand>      hands = new List<Hand>();
-        
+            List<Hand> hands = new List<Hand>();
+
             while (hands.Count() < 4)
             {
-                List<Card>  draw = new List<Card>();
+                List<Card> draw = new List<Card>();
                 while (draw.Count() < 8)
                 {
-                    draw.Add(cardList.First());
-                    cardList.RemoveAt(0);
+                    draw.Add(CardList.First());
+                    CardList.RemoveAt(0);
                 }
                 hands.Add(new Hand(draw));
             }
-            clients[0].hand = hands[0];
-            clients[1].hand = hands[1];
-            clients[2].hand = hands[2];
-            clients[3].hand = hands[3];
+            players[0].Hand = hands[0];
+            players[1].Hand = hands[1];
+            players[2].Hand = hands[2];
+            players[3].Hand = hands[3];
             return;
         }
 
-        public void reset()
+        public void Reset()
         {
-            createDeck();
+            CreateDeck();
         }
 
         private List<E> ShuffleList<E>(List<E> inputList)

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Client
 {
     class Client
-    {
+    { 
         private static readonly Socket ClientSocket = new Socket
           (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -20,6 +21,7 @@ namespace Client
             {
                 SendRequest();
                 ReceiveResponse();
+                
             }
         }
 
@@ -52,6 +54,7 @@ namespace Client
                 SendRequest();
                 ReceiveResponse();
             }
+            
         }
 
         private static void Exit()

@@ -10,17 +10,21 @@ namespace cardGame
     {
         static void Main(string[] args)
         {
-            JClient[] clients = new JClient[4];
+            CoincheServer server = new CoincheServer();
+
+            server.Run();
+           /* Player[] clients = new Player[4];
             Deck deck = new Deck();
-            clients[0] = new JClient();
-            clients[1] = new JClient();
-            clients[2] = new JClient();
-            clients[3] = new JClient();
-            deck.distrib(clients);
+            clients[0] = new Player();
+            clients[1] = new Player();
+            clients[2] = new Player();
+            clients[3] = new Player();
+            deck.Distrib(clients);
             for (int i = 0; i < 4; ++i)
-                clients[i].hand.Show();
+                clients[i].Hand.Show();
             while (true);
-            return;
+            return;*/
+
         }
     }
 }
